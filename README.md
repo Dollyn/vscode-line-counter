@@ -8,5 +8,5 @@ This is the first version of line-counter plugin. It countributes 2 commands to 
 - Count workspace
 
 
-![feature X](images/overview.gif)
+![feature X](https://github.com/Dollyn/vscode-line-counter/raw/master/images/overview.gif)
 
