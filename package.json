@@ -2,7 +2,7 @@
     "name": "line-counter",
     "displayName": "line-counter",
     "description": "count the lines of code(LOC).",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "Dollyn",
     "engines": {
         "vscode": "^1.5.0"
