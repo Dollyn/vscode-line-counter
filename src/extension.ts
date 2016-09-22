@@ -31,24 +31,20 @@ export function activate(context: vscode.ExtensionContext) {
 
     let countWorkspaceCommand = vscode.commands.registerCommand('extension.count-workspace', () => {
         let rootPath = vscode.workspace.rootPath;
-         
+        console.log(rootPath);
         if (rootPath) {
             let lineCount = 0;
-            vscode.workspace.findFiles("*.*", ".vscode/*", 0).then(value => {
+            vscode.workspace.findFiles("**/*", "**∕.vscode∕**", 0).then(value => {
                 let count = value.length;
-                
+                console.log('count' + count);
                 for (let _i = 0; _i < value.length; _i++) {
-                    let file = value[_i];
-                    vscode.workspace.openTextDocument(file).then(doc => {
-                        lineCount += doc.lineCount;
-                        count--;
-                        if (count == 0) {
-                            channel.show();
-                            channel.appendLine("Workspace's total line count: " + lineCount);    
-                        }
-                    });  
+                    let file = value[_i];      
+                    console.log('counting ' + file.path + "...");              
+                    let content = fs.readFileSync(file.fsPath, 'utf-8');
+                    lineCount += content.split('\n').length;
                 }
-        
+                channel.show();
+                channel.append('Workspace total line count is ' + lineCount.toLocaleString());
             });
            
         } else {
