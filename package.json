@@ -2,7 +2,8 @@
     "name": "line-counter",
     "displayName": "line-counter",
     "description": "count the lines of code(LOC).",
-    "version": "0.0.4",
+    "icon": "images/list.png",
+    "version": "0.1.1",
     "publisher": "Dollyn",
     "engines": {
         "vscode": "^1.5.0"
@@ -22,7 +23,25 @@
         }, {
             "command": "extension.count-workspace",
             "title": "Count Workspace"
-        }]
+        }],
+        "configuration": {
+            "title": "Line-Counter Configurations",
+            "properties": {
+                "line-counter.excludes" : {
+                    "type": "array",
+                    "default": [
+                        "**/.vscode/**"
+                    ],
+                    "description": "Files excluded from counting."
+                },
+                "line-counter.includes" : {
+                    "type": "array",
+                    "default": [
+                        "**/*"
+                    ]
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",

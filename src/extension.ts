@@ -18,10 +18,6 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let countFileCommand = vscode.commands.registerCommand('extension.count-file', () => {
-        // The code you place here will be executed every time your command is executed
-        
-        // Display a message box to the user
-        // vscode.window.showInformationMessage('Hello World!');
         let editor = vscode.window.activeTextEditor;
         let document = editor.document;
         let lineCount = document.lineCount;
@@ -34,7 +30,13 @@ export function activate(context: vscode.ExtensionContext) {
         console.log(rootPath);
         if (rootPath) {
             let lineCount = 0;
-            vscode.workspace.findFiles("**/*", "**∕.vscode∕**", 0).then(value => {
+            let cfg = vscode.workspace.getConfiguration("line-counter");
+            let includesCfg = cfg.get<string[]>('includes');
+            let includes = `{${includesCfg.join(',')}}`;
+            let excludesCfg = cfg.get<string[]>("excludes");
+            let excludes = `{${excludesCfg.join(',')}}`;
+
+            vscode.workspace.findFiles(includes, excludes, 0).then(value => {
                 let count = value.length;
                 console.log('count' + count);
                 for (let _i = 0; _i < value.length; _i++) {
@@ -44,12 +46,12 @@ export function activate(context: vscode.ExtensionContext) {
                     lineCount += content.split('\n').length;
                 }
                 channel.show();
-                channel.append('Workspace total line count is ' + lineCount.toLocaleString());
+                channel.appendLine('Workspace total line count is ' + lineCount.toLocaleString());
             });
            
         } else {
             channel.show();
-            channel.append('no workspace, countting cancled...');
+            channel.appendLine('no workspace, countting cancled...');
         }
 
     });
