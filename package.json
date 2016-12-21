@@ -1,10 +1,10 @@
 {
     "name": "line-counter",
     "displayName": "line-counter",
-    "description": "count the lines of code(LOC).",
-    "icon": "images/list.png",
-    "version": "0.1.1",
-    "publisher": "Dollyn",
+    "description": "Count the lines of code(LOC).",
+    "icon": "images/icon.png",
+    "version": "0.2.0",
+    "publisher": "dollyn",
     "engines": {
         "vscode": "^1.5.0"
     },
@@ -17,24 +17,27 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.count-file",
-            "title": "Count Current File"
-        }, {
-            "command": "extension.count-workspace",
-            "title": "Count Workspace"
-        }],
+        "commands": [
+            {
+                "command": "extension.count-file",
+                "title": "Count Current File"
+            },
+            {
+                "command": "extension.count-workspace",
+                "title": "Count Workspace"
+            }
+        ],
         "configuration": {
             "title": "Line-Counter Configurations",
             "properties": {
-                "line-counter.excludes" : {
+                "line-counter.excludes": {
                     "type": "array",
                     "default": [
                         "**/.vscode/**"
                     ],
                     "description": "Files excluded from counting."
                 },
-                "line-counter.includes" : {
+                "line-counter.includes": {
                     "type": "array",
                     "default": [
                         "**/*"

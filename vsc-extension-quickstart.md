@@ -20,7 +20,7 @@ We pass the function containing the implementation of the command as the second 
 ## Make changes
 * you can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`
 * you can also reload (`Ctrl+R` or `Cmd+R` on Mac) the VS Code window with your extension to load your changes
-
+  
 ## Explore the API
 * you can open the full set of our API when you open the file `node_modules/vscode/vscode.d.ts`
 
@@ -29,5 +29,5 @@ We pass the function containing the implementation of the command as the second 
 * press `F5` to run the tests in a new window with your extension loaded
 * see the output of the test result in the debug console
 * make changes to `test/extension.test.ts` or create new test files inside the `test` folder
-    * by convention, the test runner will only consider files matching the name pattern `**.test.ts`
+    * by convention, the test runner will only consider fil es matching the name pattern `**.test.ts`
     * you can create folders inside the `test` folder to structure your tests any way you want
