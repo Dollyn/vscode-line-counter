@@ -21,11 +21,3 @@ You can custom the includes/excludes file pattern:
 
 
 ![feature X](https://github.com/Dollyn/vscode-line-counter/raw/master/images/overview.gif)
-
-## Release Notes
-
-### 0.2.0
-Can now count comments and blank lines separately for c-like grammar(java,js,ts,go). 
-
-### 0.1.0
-Support includes/excludes counfiguration.

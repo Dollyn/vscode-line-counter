@@ -5,33 +5,6 @@
 import fs = require('fs');
 import * as vscode from 'vscode';
 
-interface RegExpConstructor {
-    [Symbol.species](): RegExpConstructor;
-}
-
-interface Map<K, V> {
-    clear(): void;
-    delete(key: K): boolean;
-    entries(): IterableIterator<[K, V]>;
-    forEach(callbackfn: (value: V, index: K, map: Map<K, V>) => void, thisArg?: any): void;
-    get(key: K): V;
-    has(key: K): boolean;
-    keys(): IterableIterator<K>;
-    set(key: K, value?: V): Map<K, V>;
-    size: number;
-    values(): IterableIterator<V>;
-    [Symbol.iterator]():IterableIterator<[K,V]>;
-    [Symbol.toStringTag]: string;
-}
-
-interface MapConstructor {
-    new (): Map<any, any>;
-    new <K, V>(): Map<K, V>;
-    new <K, V>(iterable: Iterable<[K, V]>): Map<K, V>;
-    prototype: Map<any, any>;
-}
-declare var Map: MapConstructor;
-
 const ruleMap = new Map<string, vscode.CommentRule>();
 
 let cLikeRule = {
@@ -69,6 +42,11 @@ export function activate(context: vscode.ExtensionContext) {
     let countWorkspaceCommand = vscode.commands.registerCommand('extension.count-workspace', () => {
         let rootPath = vscode.workspace.rootPath;
         console.log(rootPath);
+        channel.show();
+        channel.appendLine('Start counting... ');
+        let start = Date.now();
+        console.time("count");
+
         if (rootPath) {
             let lineCount = 0;
             let comments = 0;
@@ -92,16 +70,18 @@ export function activate(context: vscode.ExtensionContext) {
                     result.blank += resultOfFile.blank;             
                 }
                 channel.show();
-                channel.appendLine('Workspace total line count is: ');
+                let end = Date.now();
+                let time = end - start;
+                channel.appendLine(`Countting took ${time} ms, the result is: `);
                 channel.appendLine(`    total: ${result.all}`);
                 channel.appendLine(`    comment: ${result.commnet}`);
                 channel.appendLine(`    blank: ${result.blank}`);
+                console.timeEnd("count");
             });           
         } else {
             channel.show();
             channel.appendLine('no workspace, countting cancled...');
         }
-
     });
     
     context.subscriptions.push(countFileCommand);
