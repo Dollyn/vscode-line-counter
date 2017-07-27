@@ -72,10 +72,11 @@ export function activate(context: vscode.ExtensionContext) {
                 channel.show();
                 let end = Date.now();
                 let time = end - start;
-                channel.appendLine(`Countting took ${time} ms, the result is: `);
-                channel.appendLine(`    total: ${result.all}`);
-                channel.appendLine(`    comment: ${result.commnet}`);
-                channel.appendLine(`    blank: ${result.blank}`);
+                channel.appendLine(`Countting took ${time} ms. The result is: `);
+                channel.appendLine(`    total:\t${result.all}`);
+                channel.appendLine(`    code:\t${result.all - result.commnet - result.blank}`);
+                channel.appendLine(`    comment:\t${result.commnet}`);
+                channel.appendLine(`    blank:\t${result.blank}`);
                 console.timeEnd("count");
             });           
         } else {

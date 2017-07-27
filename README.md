@@ -2,12 +2,12 @@
 
 ## Features
 
-This is the first version of line-counter plugin. It countributes 2 commands to count the LOC of current opened file and the whole workspace:
+This is a plugin that counts the number of lines of code. Users can use the following two commands to count the current file or the entire workspace's code line:
 
 - Count current file
 - Count workspace
 
-You can custom the includes/excludes file pattern: 
+You can also customize the inclusion or omission of certain files by following the configuration: 
 
 ```
     "line-counter.excludes": [
@@ -18,6 +18,6 @@ You can custom the includes/excludes file pattern:
         "**/*"
     ]
 ```
-
+(Don't hate me for the chinglish, hate google translate ^_^)
 
 ![feature X](https://github.com/Dollyn/vscode-line-counter/raw/master/images/overview.gif)
