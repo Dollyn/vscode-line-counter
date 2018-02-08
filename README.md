@@ -7,6 +7,8 @@ This is a plugin that counts the number of lines of code. Users can use the foll
 - Count current file
 - Count workspace
 
+Count workspace now support huge files (may take some long time, for 27G+ text file it takes about 5min). For some reason, Count current file can't run on huge file.
+
 You can also customize the inclusion or omission of certain files by following the configuration: 
 
 ```

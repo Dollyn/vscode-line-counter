@@ -42,8 +42,12 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let countFileCommand = vscode.commands.registerCommand('extension.count-file', () => {
+        console.log('count cuffrent')
         let editor = vscode.window.activeTextEditor;
+        console.log(editor)
         let document = editor.document;
+        console.log(document.fileName)
+        console.log(document.uri)
         let lineCount = document.lineCount;
         channel.show();
         channel.appendLine(document.fileName + "'s line count: " + lineCount.toString());
