@@ -3,7 +3,7 @@
     "displayName": "line-counter",
     "description": "Count the lines of code(LOC).",
     "icon": "https://github.com/Dollyn/vscode-line-counter/raw/master/images/icon.png",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "dollyn",
     "license": "MIT",
     "engines": {
@@ -55,12 +55,9 @@
     },
     "devDependencies": {
         "typescript": "^2.5.0",
-        "vscode": "^1.18.0",
+        "vscode": "^1.1.0",
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
-    },
-    "dependencies": {
-        "n-readlines": "^0.2.8"
     }
 }

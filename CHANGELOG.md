@@ -1,3 +1,6 @@
+### 0.4.0
+Support huge files.
+
 ### 0.2.1
 Add output "code" line number. (code = all - comment - blank)
 Thanks for Bruno Bertomeu's suggestion.
