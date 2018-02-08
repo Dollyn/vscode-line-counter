@@ -3,7 +3,7 @@
     "displayName": "line-counter",
     "description": "Count the lines of code(LOC).",
     "icon": "images/icon.png",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "publisher": "dollyn",
     "license": "MIT",
     "engines": {

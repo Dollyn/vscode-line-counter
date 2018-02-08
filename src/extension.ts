@@ -127,13 +127,14 @@ function count(path: string, countObj: LineCount): Promise<LineCount> {
             input: instream
         })
     
-        let blockComment = false
-        
+        let blockComment = false;
+        let outputChunk = 0;
         rl.on('line', function(line){
             let trimed = line.trim();
             result.all++;
-            if (result.all % 10000000 == 0) {
+            if (outputChunk ==100000000) {
                 channel.appendLine(`still counting ${path}, current line: ${result.all.toLocaleString()}`)
+                outputChunk = 0;
             }
             if (trimed.length == 0) {
                 result.blank++;
@@ -168,7 +169,7 @@ function count(path: string, countObj: LineCount): Promise<LineCount> {
             countObj.all += result.all
             countObj.blank += result.blank
             countObj.comment += result.comment
-            if (result.all >= 10000000) {
+            if (result.all >= 100000000) {
                 channel.appendLine(`counting ${path} finished.`)
             }
             resolve(countObj)
