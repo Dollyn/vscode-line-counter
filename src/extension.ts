@@ -75,7 +75,6 @@ export function activate(context: vscode.ExtensionContext) {
                 console.log(`counting ${value} ...`);
                 for (let _i = 0; _i < value.length; _i++) {
                     let file = value[_i];      
-                    console.log('counting ' + file.path + "...");    
                     counter = counter.then(res => {
                         return count(file.path, res)
                     })             
@@ -113,7 +112,7 @@ interface LineCount {
 }
 
 function count(path: string, countObj: LineCount): Promise<LineCount> {
-    console.log("counting ${path}")
+    console.log(`counting ${path}`)
     return new Promise((resolve, reject) => {
         let ext = getExt(path);
         let commentRule = ruleMap.get(ext);
