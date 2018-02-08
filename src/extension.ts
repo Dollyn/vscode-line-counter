@@ -132,7 +132,8 @@ function count(path: string, countObj: LineCount): Promise<LineCount> {
         rl.on('line', function(line){
             let trimed = line.trim();
             result.all++;
-            if (outputChunk ==100000000) {
+            outputChunk++;
+            if (outputChunk == 100_000_000) {
                 channel.appendLine(`still counting ${path}, current line: ${result.all.toLocaleString()}`)
                 outputChunk = 0;
             }
