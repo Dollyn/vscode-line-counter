@@ -80,7 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
                 for (let _i = 0; _i < value.length; _i++) {
                     let file = value[_i];      
                     counter = counter.then(res => {
-                        return count(file.path, res)
+                        return count(file.fsPath, res)
                     })             
                 }
                 counter.then(result => {
