@@ -7,6 +7,7 @@ import readline = require('readline')
 import stream = require('stream')
 import * as vscode from 'vscode';
 import { resolve } from 'path';
+const URL = require('url').URL;
 
 const ruleMap = new Map<string, vscode.CommentRule>();
 
@@ -79,8 +80,9 @@ export function activate(context: vscode.ExtensionContext) {
                 console.log(`counting ${value} ...`);
                 for (let _i = 0; _i < value.length; _i++) {
                     let file = value[_i];      
+                    const filepath = new URL('file://' + file.path)
                     counter = counter.then(res => {
-                        return count(file.path, res)
+                        return count(filepath, res)
                     })             
                 }
                 counter.then(result => {
@@ -118,7 +120,7 @@ interface LineCount {
 function count(path: string, countObj: LineCount): Promise<LineCount> {
     console.log(`counting ${path}`)
     return new Promise((resolve, reject) => {
-        let ext = getExt(path);
+        let ext = getExt(String(path));
         let commentRule = ruleMap.get(ext);
         let result: LineCount = {all: 0, comment: 0, blank: 0};
     
