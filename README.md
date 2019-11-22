@@ -1,5 +1,9 @@
 # line-counter README
 
+
+# This plugin is no longger maintained. 
+You can use other plugins. For example https://marketplace.visualstudio.com/items?itemName=uctakeoff.vscode-counter , which is better than this, and implemented many featrues that I planed to do. The auther Kentaro Ushiyama did a great job.
+
 ## Features
 
 This is a plugin that counts the number of lines of code. Users can use the following two commands to count the current file or the entire workspace's code line:
