@@ -24,6 +24,7 @@ ruleMap.set("java", cLikeRule);
 ruleMap.set("kt", cLikeRule);
 ruleMap.set("go", cLikeRule);
 ruleMap.set("ts", cLikeRule);
+ruleMap.set("cs", cLikeRule);
 ruleMap.set("sql", sqlRule)
 
 
